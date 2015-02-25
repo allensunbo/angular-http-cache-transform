@@ -1,12 +1,15 @@
 <div>
-  <select ng-options="city.name for city in cities track by city.id" ng-model="selected"
+  <select ng-options="city.name for city in cities track by city.id" ng-model="selectedCity"
           ng-change="update()">
   </select>
 </div>
 
-<div style="border: 2px solid blue;">
-  city: {{selected.name}}<br>
-  weather: {{weather}} <br>
-  wind: speed = {{wind.speed}}, degree = {{wind.deg}}<br>
-  <my-rotate degree="wind.deg"></my-rotate>
+<div ng-repeat="city in selectedCities">
+  <div style="border: 2px solid blue; margin:5px;" class="col col-sm-3">
+    city: {{city.name}}<br>
+    weather: {{city.weather}} <br>
+    wind: speed = {{city.wind.speed}}, <br>
+          degree = {{city.wind.deg}}<br>
+    <my-rotate degree="city.wind.deg"></my-rotate>
+  </div>
 </div>

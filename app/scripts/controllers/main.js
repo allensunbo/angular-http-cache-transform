@@ -10,14 +10,14 @@
 angular.module('angularHttpCacheTransformApp')
   .controller('MainCtrl', function ($scope, CityService, WeatherService) {
 
-    $scope.results = [];
+    $scope.selectedCities = [];
 
     $scope.cities = CityService.getAllCities();
 
-    $scope.selected = $scope.cities[0];
+    $scope.selectedCity = $scope.cities[0];
 
     $scope.update = function () {
-      var selectedCity = $scope.selected.name;
+      var selectedCity = $scope.selectedCity.name;
       WeatherService.getWeatherIntoScopeMessage($scope, selectedCity);
     }
 
@@ -41,7 +41,8 @@ angular.module('angularHttpCacheTransformApp')
             return;
           }
           var degree = scope.degree;
-          angular.element(elem.children()[0]).css('-webkit-transform', 'rotate(' + (initialTilt + degree) + 'deg)');
+          angular.element(elem.children()[0]).css('-webkit-transform', 'rotate('
+            + (initialTilt + degree) + 'deg)');
         });
       }
     }
@@ -69,8 +70,11 @@ angular.module('angularHttpCacheTransformApp')
                 $scope.$apply(function () {
                   var result = JSON.parse(e.data);
                   // console.log(result);
-                  $scope.weather = result.weather[0].description;
-                  $scope.wind = result.wind;
+                  var weather = result.weather[0].description;
+                  var wind = result.wind;
+                  $scope.selectedCities.unshift({
+                    name: $scope.selectedCity.name, weather: weather, wind: wind
+                  });
                 });
               };
             }
