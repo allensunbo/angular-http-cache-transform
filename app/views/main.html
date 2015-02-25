@@ -1,11 +1,11 @@
 <div>
-  <select ng-options="item.label for item in values track by item.id" ng-model="selected"
+  <select ng-options="city.name for city in cities track by city.id" ng-model="selected"
           ng-change="update()">
   </select>
 </div>
 
 <div style="border: 2px solid blue;">
-  city: {{selected.label}}<br>
+  city: {{selected.name}}<br>
   weather: {{weather}} <br>
   wind: speed = {{wind.speed}}, degree = {{wind.deg}}<br>
   <my-rotate degree="wind.deg"></my-rotate>

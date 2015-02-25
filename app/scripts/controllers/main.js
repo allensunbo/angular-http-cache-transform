@@ -10,12 +10,14 @@
 angular.module('angularHttpCacheTransformApp')
   .controller('MainCtrl', function ($scope, CityService, WeatherService) {
 
-    $scope.values = CityService.getAllCities();
+    $scope.results = [];
 
-    $scope.selected = $scope.values[0];
+    $scope.cities = CityService.getAllCities();
+
+    $scope.selected = $scope.cities[0];
 
     $scope.update = function () {
-      var selectedCity = $scope.selected.label;
+      var selectedCity = $scope.selected.name;
       WeatherService.getWeatherIntoScopeMessage($scope, selectedCity);
     }
 
@@ -30,7 +32,7 @@ angular.module('angularHttpCacheTransformApp')
       scope: {
         degree: '='
       },
-      transclude: true,
+      // transclude: true,
       template: '<i class="fa fa-compass" style="font-size: 44px;"></i>',
       link: function (scope, elem, attrs) {
         var initialTilt = -32;
@@ -88,19 +90,19 @@ angular.module('angularHttpCacheTransformApp')
       getAllCities: function () {
         return [{
           id: 1,
-          label: 'London'
+          name: 'London'
         }, {
           id: 2,
-          label: 'Birmingham'
+          name: 'Birmingham'
         }, {
           id: 3,
-          label: 'Bristol'
+          name: 'Bristol'
         }, {
           id: 4,
-          label: 'Cambridge'
+          name: 'Cambridge'
         }, {
           id: 5,
-          label: 'Durham'
+          name: 'Durham'
         }]
       }
     }
