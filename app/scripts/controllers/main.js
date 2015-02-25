@@ -24,6 +24,26 @@ angular.module('angularHttpCacheTransformApp')
   })
   // we only consider UK in this example
   .constant('country', 'uk')
+  .directive('myRotate', function ($compile) {
+    return {
+      restrict: 'EA',
+      scope: {
+        degree: '='
+      },
+      transclude: true,
+      template: '<i class="fa fa-compass" style="font-size: 44px;"></i>',
+      link: function (scope, elem, attrs) {
+        var initialTilt = -32;
+        scope.$watch('degree', function () {
+          if (!scope.degree) {
+            return;
+          }
+          var degree = scope.degree;
+          angular.element(elem.children()[0]).css('-webkit-transform', 'rotate(' + (initialTilt + degree) + 'deg)');
+        });
+      }
+    }
+  })
   .factory('WeatherService', function ($http, country) {
 
     return {
@@ -46,7 +66,7 @@ angular.module('angularHttpCacheTransformApp')
 
                 $scope.$apply(function () {
                   var result = JSON.parse(e.data);
-                  console.log(result);
+                  // console.log(result);
                   $scope.weather = result.weather[0].description;
                   $scope.wind = result.wind;
                 });
