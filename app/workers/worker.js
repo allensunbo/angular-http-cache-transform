@@ -9,8 +9,6 @@ onmessage = function (e) {
     var workerResult = {
       name: data.name, weather: weather, wind: wind
     };
-
     postMessage(JSON.stringify(workerResult));
-
   }, 500);
 }

@@ -7,15 +7,16 @@ angular.module('angularHttpCacheTransformApp')
       },
       // transclude: true,
       template: '<i class="fa fa-compass" style="font-size: 44px;"></i>',
-      link: function (scope, elem, attrs) {
+      link: function (scope, elem) {
         var initialTilt = -32;
         scope.$watch('degree', function () {
           if (!scope.degree) {
             return;
           }
-          var degree = scope.degree;
-          angular.element(elem.children()[0]).css('-webkit-transform', 'rotate('
-          + (initialTilt + parseFloat(degree) + 'deg)'));
+          var degree = scope.degree, rotation = initialTilt + parseFloat(degree);
+          var compass = elem.children()[0];
+          angular.element(compass).css('-webkit-transform', 'rotate(' + rotation + 'deg)');
+          angular.element(compass).css('-moz-transform', 'rotate(' + rotation + 'deg)');
         });
       }
     }
