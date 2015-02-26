@@ -37,7 +37,7 @@ angular.module('angularHttpCacheTransformApp')
     return {
       restrict: 'EA',
       scope: {
-        degree: '='
+        degree: '@'
       },
       // transclude: true,
       template: '<i class="fa fa-compass" style="font-size: 44px;"></i>',
@@ -49,7 +49,7 @@ angular.module('angularHttpCacheTransformApp')
           }
           var degree = scope.degree;
           angular.element(elem.children()[0]).css('-webkit-transform', 'rotate('
-          + (initialTilt + degree) + 'deg)');
+          + (initialTilt + parseFloat(degree) + 'deg)'));
         });
       }
     }
