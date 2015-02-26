@@ -23,6 +23,13 @@ angular.module('angularHttpCacheTransformApp')
 
     $scope.update();
 
+    // we should generate uuid for each selected city instead of using raw city id;
+    // index is not reliable if we use filter
+    $scope.remove = function (index) {
+      console.log(index);
+      $scope.selectedCities.splice(index, 1);
+    }
+
   })
   // we only consider UK in this example
   .constant('country', 'uk')
@@ -42,7 +49,7 @@ angular.module('angularHttpCacheTransformApp')
           }
           var degree = scope.degree;
           angular.element(elem.children()[0]).css('-webkit-transform', 'rotate('
-            + (initialTilt + degree) + 'deg)');
+          + (initialTilt + degree) + 'deg)');
         });
       }
     }

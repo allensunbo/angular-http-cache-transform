@@ -5,11 +5,19 @@
 </div>
 
 <div ng-repeat="city in selectedCities">
-  <div style="border: 2px solid blue; margin:5px;" class="col col-sm-3">
-    city: {{city.name}}<br>
-    weather: {{city.weather}} <br>
-    wind: speed = {{city.wind.speed}}, <br>
-          degree = {{city.wind.deg}}<br>
-    <my-rotate degree="city.wind.deg"></my-rotate>
+  <div class="col col-sm-3 city">
+    <div class="pull-right btn btn-sm" style="color: red" ng-click="remove($index)">
+      <i class="fa fa-times-circle-o fa-2x"></i>
+    </div>
+    <div class="pull-left" style="background-color: #000088; color: #ffffff; font-size: large">
+      {{city.name}}
+    </div>
+    <div>weather: {{city.weather}}</div>
+    <div>wind: speed = {{city.wind.speed}},
+      degree = {{city.wind.deg}}
+    </div>
+    <div align="center">
+      <my-rotate degree="city.wind.deg"></my-rotate>
+    </div>
   </div>
 </div>
