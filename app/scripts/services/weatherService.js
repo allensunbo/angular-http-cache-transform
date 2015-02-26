@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('angularHttpCacheTransformApp')
   .factory('WeatherService', function ($http, country) {
 

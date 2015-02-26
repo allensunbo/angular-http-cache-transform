@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('angularHttpCacheTransformApp')
   .directive('myRotate', function () {
     return {
@@ -19,5 +21,5 @@ angular.module('angularHttpCacheTransformApp')
           angular.element(compass).css('-moz-transform', 'rotate(' + rotation + 'deg)');
         });
       }
-    }
+    };
   });

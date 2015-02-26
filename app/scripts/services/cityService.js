@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('angularHttpCacheTransformApp')
   .factory('CityService', function () {
     return {
@@ -17,7 +19,7 @@ angular.module('angularHttpCacheTransformApp')
         }, {
           id: 5,
           name: 'Durham'
-        }]
+        }];
       }
-    }
+    };
   });
